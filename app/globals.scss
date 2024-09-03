@@ -1,0 +1,32 @@
+:root {
+	--White: #ffffff;
+	--Grey: #646464;
+	--Black: #2b2b2b;
+	--Orange: #ff5d17;
+	--Blue: #3177f2;
+
+	--fs-13: 13px;
+	--fs-14: 14px;
+	--fs-16: 16px;
+	--fs-24: 24px;
+	--fs-28: 28px;
+	--fs-32: 32px;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.blue {
+	color: var(--Blue, #3177f2);
+}
+
+body {
+	font-family: Poppins, sans-serif;
+}
+
+img {
+	max-width: 100%;
+}

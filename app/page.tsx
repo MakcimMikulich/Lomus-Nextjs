@@ -1,95 +1,80 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
+import logo from "../public/img/logo.svg";
+import mainImg from "../public/img/main.png";
+import borderleft from "../public/img/left.png";
+import borderRight from "../public/img/right.png";
+import logoLocations from "../public/img/location.svg";
+import logoServers from "../public/img/hierarchy-square-2.svg";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	console.dir(borderleft);
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+	return (
+		<>
+			<div className={styles.header_wrapper}>
+				<header className={styles.header}>
+					<div className={styles.logo_wrapper}>
+						<img src={logo.src} alt={"logo"} />
+						<span>VPN</span>
+					</div>
+					<button className={styles.button}>Get VPN</button>
+				</header>
+			</div>
+			<main className={styles.main}>
+				<section className={styles.preview}>
+					<h1 className={styles.preview_title}>
+						Access <span className="blue">everything securely</span> with
+						<br />
+						VPN
+					</h1>
+					<div className={styles.preview_picture}>
+						<img src={mainImg.src} alt={"mainImg"} />
+					</div>
+					<button className={styles.preview_button}>Get VPN</button>
+					<div className={styles.preview_counter}>
+						<div className={styles.preview_counter_header}>
+							<div>
+								<img
+									src={borderleft.src}
+									alt={"borderRight"}
+									height={42}
+									width={22}
+								/>
+							</div>
+							<div className={styles.preview_counter_header_total}>
+								<p>Trusted by</p>
+								<p>50M+ Users</p>
+							</div>
+							<div>
+								<img
+									src={borderRight.src}
+									alt={"borderRight"}
+									height={42}
+									width={22}
+								/>
+							</div>
+						</div>
+						<div className={styles.preview_counter_main}>
+							<div className={styles.achievement}>
+								<div>
+									<img src={logoLocations.src} alt={logoLocations} />
+								</div>
+								<div className={styles.achievement_info}>
+									<p className={styles.achievement_info_number}>50+</p>
+									<p className={styles.achievement_info_note}>Locations</p>
+								</div>
+							</div>
+						</div>
+						<div className={styles.preview_counter_note}>
+							VPN-your <span className="blue">ultimate</span> solution for a
+							private and secure online experience!
+						</div>
+					</div>
+				</section>
+				<section></section>
+				<section></section>
+			</main>
+		</>
+	);
 }
