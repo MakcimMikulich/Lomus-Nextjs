@@ -1,32 +1,51 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Modal.module.scss";
-import note from "./../public/img/note.svg";
+import note from "/public/img/note.svg";
+import close from "/public/img/close.svg";
+import { validateEmail } from "./validateEmail";
 
-const Modal = () => {
+type ModalProps = {
+    setModalIsOpen: (state: boolean) => void;
+    userName: string;
+};
+
+const Modal = ({ setModalIsOpen, userName }: ModalProps) => {
+    const [inputValue, setInputValue] = useState("");
+    const [btnInnerText, setBtnInnerText] = useState("Continue");
+
+    console.log(userName);
+
+    const handlerClick = () => {
+        const valid = validateEmail(inputValue);
+
+        if (valid) {
+            console.log(inputValue);
+            setBtnInnerText("Complete");
+        } else {
+            setBtnInnerText("Invalid Email");
+        }
+    };
+
     return (
         <div className={styles.modal}>
-            <div className={styles.modal_close}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M14 1.4L12.6 0L7 5.6L1.4 0L0 1.4L5.6 7L0 12.6L1.4 14L7 8.4L12.6 14L14 12.6L8.4 7L14 1.4Z"
-                        fill="#838283"
-                    />
-                </svg>
+            <div
+                onClick={() => {
+                    setModalIsOpen(false);
+                    setBtnInnerText("Continue");
+                    setInputValue("");
+                }}
+                className={styles.modal_close}
+            >
+                <img src={close.src} alt={"close"} />
             </div>
             <div className={styles.modal_label}>Your name</div>
 
-            <div className={styles.modal_name}>Sushma Andrade</div>
+            <div className={styles.modal_name}>{userName}</div>
             <input
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
                 placeholder={"Enter your email"}
                 className={styles.modal_input}
             ></input>
@@ -37,9 +56,11 @@ const Modal = () => {
                     personal information.
                 </span>
             </div>
-            <button className={styles.modal_button}>Continue</button>
+            <button onClick={handlerClick} className={styles.modal_button}>
+                {btnInnerText}
+            </button>
         </div>
     );
 };
 
-export default Modal;
+export { Modal };
