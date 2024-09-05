@@ -11,8 +11,6 @@ export default function Home() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [userName, setUserName] = useState("");
 
-    console.log(userName);
-
     return (
         <>
             <Header />
